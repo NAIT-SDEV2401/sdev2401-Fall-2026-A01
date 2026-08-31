@@ -1,0 +1,143 @@
+[
+  {
+    "model": "clients.company",
+    "pk": 10,
+    "fields": {
+      "name": "Quantum Solutions",
+      "email": "info@quantumsolutions.com",
+      "description": "Quantum Solutions is a cutting-edge tech company specializing in quantum computing and AI research.",
+      "created_at": "2025-06-11T10:00:00.000Z",
+      "updated_at": "2025-06-11T10:00:00.000Z"
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 20,
+    "fields": {
+      "first_name": "Liam",
+      "last_name": "Nguyen",
+      "email": "liam.nguyen@quantumsolutions.com",
+      "created_at": "2025-06-11T10:01:00.000Z",
+      "updated_at": "2025-06-11T10:01:00.000Z",
+      "company": 10,
+      "role": 1
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 21,
+    "fields": {
+      "first_name": "Sophia",
+      "last_name": "Patel",
+      "email": "sophia.patel@quantumsolutions.com",
+      "created_at": "2025-06-11T10:02:00.000Z",
+      "updated_at": "2025-06-11T10:02:00.000Z",
+      "company": 10,
+      "role": 2
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 22,
+    "fields": {
+      "first_name": "Noah",
+      "last_name": "Kim",
+      "email": "noah.kim@quantumsolutions.com",
+      "created_at": "2025-06-11T10:03:00.000Z",
+      "updated_at": "2025-06-11T10:03:00.000Z",
+      "company": 10,
+      "role": 3
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 23,
+    "fields": {
+      "first_name": "Olivia",
+      "last_name": "Garcia",
+      "email": "olivia.garcia@quantumsolutions.com",
+      "created_at": "2025-06-11T10:04:00.000Z",
+      "updated_at": "2025-06-11T10:04:00.000Z",
+      "company": 10,
+      "role": 2
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 24,
+    "fields": {
+      "first_name": "Mason",
+      "last_name": "Lee",
+      "email": "mason.lee@quantumsolutions.com",
+      "created_at": "2025-06-11T10:05:00.000Z",
+      "updated_at": "2025-06-11T10:05:00.000Z",
+      "company": 10,
+      "role": 3
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 25,
+    "fields": {
+      "first_name": "Emma",
+      "last_name": "Martinez",
+      "email": "emma.martinez@quantumsolutions.com",
+      "created_at": "2025-06-11T10:06:00.000Z",
+      "updated_at": "2025-06-11T10:06:00.000Z",
+      "company": 10,
+      "role": 1
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 26,
+    "fields": {
+      "first_name": "Lucas",
+      "last_name": "Brown",
+      "email": "lucas.brown@quantumsolutions.com",
+      "created_at": "2025-06-11T10:07:00.000Z",
+      "updated_at": "2025-06-11T10:07:00.000Z",
+      "company": 10,
+      "role": 2
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 27,
+    "fields": {
+      "first_name": "Ava",
+      "last_name": "Wilson",
+      "email": "ava.wilson@quantumsolutions.com",
+      "created_at": "2025-06-11T10:08:00.000Z",
+      "updated_at": "2025-06-11T10:08:00.000Z",
+      "company": 10,
+      "role": 3
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 28,
+    "fields": {
+      "first_name": "Ethan",
+      "last_name": "Clark",
+      "email": "ethan.clark@quantumsolutions.com",
+      "created_at": "2025-06-11T10:09:00.000Z",
+      "updated_at": "2025-06-11T10:09:00.000Z",
+      "company": 10,
+      "role": 2
+    }
+  },
+  {
+    "model": "clients.employee",
+    "pk": 29,
+    "fields": {
+      "first_name": "Mia",
+      "last_name": "Davis",
+      "email": "mia.davis@quantumsolutions.com",
+      "created_at": "2025-06-11T10:10:00.000Z",
+      "updated_at": "2025-06-11T10:10:00.000Z",
+      "company": 10,
+      "role": 3
+    }
+  }
+]

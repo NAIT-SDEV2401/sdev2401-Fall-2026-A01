@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold underline">
+          List of Company Clients
+        </h1>
+        <!-- New section using jinja templates -->
+        <section>
+            <ul class="list-disc pl-5">
+            {% for company in companies %}
+                <li class="mb-2">
+                    <strong>{{ company.name }}</strong>
+                    <div>
+                        {{company.email}}
+                    </div>
+                    <!-- New field created -->
+                    <p>{{company.description}}</p>
+                    <p>Created at: {{ company.created_at }}</p>
+                    <p>Information Last updated: {{ company.updated_at }}</p>
+                </li>
+            {% endfor %}
+            </ul>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {% block css_styles %}{% endblock %}
+    {% block js_scripts %}{% endblock %}
+    <title>
+        {% block title %}My Software company{% endblock %}
+    </title>
+  </head>
+  <body>
+    <header>
+        {% block header %}
+            <nav class="bg-gray-800 p-4">
+                <div class="max-w-2xl mx-auto flex justify-between items-center">
+                    <a href="/" class="text-white text-lg font-semibold">My Software Company</a>
+                </div>
+            </nav>
+        {% endblock %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+
+    </main>
+    <footer>
+        {% block footer %}
+            <p class="text-center text-gray-500">
+                &copy; 2025 My Software Company. All rights reserved.
+            </p>
+        {% endblock %}
+    </footer>
+  </body>
+</html>

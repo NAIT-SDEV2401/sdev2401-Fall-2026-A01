@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Django, posts app</title>
+  </head>
+  <body>
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold underline">
+          Welcome to the Pet Adoption Matcher!
+        </h1>
+        <p class="text-lg mb-2">Find your perfect pet match today!</p>
+        <!-- New section using jinja templates -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4">Available Pet Types</h2>
+            <ul class="list-disc pl-5">
+            <!--
+                Last class we saw how to loop through a list.
+                Below we loop through a dictionary using the items property.
+                The items property returns a list of tuples, where each tuple is a key-value pair.
+            -->
+            {% for pet_type, pet in pet_types.items %}
+                <li class="mb-2">
+                    <!-- This is the key-->
+                    <strong>{{ pet_type }}</strong>
+                    <div>
+                        <!-- This is the whic hsi a dictionary itself -->
+                        {{pet.traits}}
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+
+        </section>
+    </div>
+  </body>
+</html>

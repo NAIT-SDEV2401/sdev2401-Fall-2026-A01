@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold underline">
+        Contact Us
+    </h1>
+    <!-- Show the success message -->
+    {% if success %}
+    <div class="mt-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded">
+        Your message has been sent successfully. We will get back to you shortly.
+    </div>
+    {% endif %}
+
+    <form method="post" class="mt-4">
+        <!-- Add the CSRF token for security -->
+        {% csrf_token %}
+        <!-- Render the form fields -->
+            {% for field in form %}
+            <div>
+            <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
+                {{ field.label }}
+            </label>
+            {{ field }}
+            {% if field.errors %}
+                <p class="text-sm text-red-500 mt-1">{{ field.errors|striptags }}</p>
+            {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
+            Submit
+        </button>
+    </form>
+</div>
+
+{% endblock %}

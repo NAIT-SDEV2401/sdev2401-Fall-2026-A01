@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Pet Details</title>
+  </head>
+  <body>
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold underline">
+          Is a {{pet_type}} the right match for you?
+        </h1>
+        <section>
+            {% if pet_data %}
+            <h2 class="text-2xl font-semibold mb-4">Pet Details</h2>
+            <p class="text-lg mb-2">
+                The traits of a {{pet_type}} are: {{pet_data.traits}}
+            </p>
+            {% else %}
+            <p class="text-lg mb-2">
+                Sorry, we don't have any information about this pet type.
+            </p>
+            {% endif %}
+        </section>
+    </div>
+  </body>
+</html>

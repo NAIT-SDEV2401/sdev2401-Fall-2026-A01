@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold underline">
+        <!-- title here-->
+        Employees of {{ company.name }}
+    </h1>
+    <div class="text-lg">search query: {{query}} </div>
+    <section>
+        <ul class="list-disc pl-5">
+            {% for employee in employees %}
+                <li class="mb-2">
+                    <strong>{{ employee.first_name }} {{ employee.last_name }}</strong>
+                    <div>
+                        {{ employee.email }}
+                    </div>
+                    <p>Role: {{employee.role}}</p>
+
+                </li>
+            {% endfor %}
+        </ul>
+</div>
+
+{% endblock %}
