@@ -25,3 +25,11 @@ PET_TYPES = {
 
 def home_page(request):
     return render(request, "pet_adoption/home_page.html", {"pet_types": PET_TYPES})
+
+def pet_type_details(request, pet_type):
+    # filtering the data
+    pet_data = PET_TYPES.get(pet_type, None)
+
+    context = {"p_type": pet_type, "p_data": pet_data}
+
+    return render(request, "pet_adoption/pet_details.html", context)
