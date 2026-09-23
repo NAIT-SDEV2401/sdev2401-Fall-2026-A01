@@ -24,11 +24,13 @@
           {% for pet_type, pet in pet_types.items %}
               <li class="mb-2">
                   <!-- This is the key-->
-                  <strong>{{ pet_type }}</strong>
-                  <div>
-                      <!-- This is the value, which is a dictionary itself -->
-                      {{pet.traits}}
-                  </div>
+                  <a href="{% url 'pet_detail' pet_type %}">
+                    <strong>{{ pet_type }}</strong>
+                    <div>
+                        <!-- This is the value, which is a dictionary itself -->
+                        {{pet.traits}}
+                    </div>
+                  </a>
               </li>
           {% endfor %}
           </ul>
