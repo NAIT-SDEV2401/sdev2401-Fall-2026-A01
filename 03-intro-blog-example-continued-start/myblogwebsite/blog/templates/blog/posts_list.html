@@ -11,6 +11,24 @@
         <h1 class="text-3xl font-bold underline">
             Hello, I'm using a backend framework!
         </h1>
+
+        {# demonstrating an "if" statement #}
+        
+        {% if 1 == 0 %}
+          IT'S TRUE
+        {% endif %}
+        
+        {% for p in the_posts %}
+
+          
+          <div class="bg-white shadow rounded-xl p-4 mb-4">
+            <a href="{% url 'post_detail' p.pk %}">
+              <p class="text-lg mb-2">#{{forloop.counter0}}) {{ p.title }}</p>
+            </a>
+            <span class="text-sm text-gray-500">{{ p.created_date }}</span>
+          </div>
+
+        {% endfor %}
     </div>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>{{ post.title }}</title>
+  </head>
+  <body>
+    <div class="max-w-2xl mx-auto">
+        <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">{{ post.title }}</h1>
+            <p class="text-sm text-gray-500 mb-6">Posted on {{ post.created_date | date:"Y-m-d"}}</p>
+
+            <div class="prose prose-lg text-gray-700">
+                {{ post.text | linebreaks }}
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

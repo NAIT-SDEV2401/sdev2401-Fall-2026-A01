@@ -3,24 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Note we're keeping this out so that it won't get overwritten -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     {% block css_styles %}{% endblock %}
     {% block js_scripts %}{% endblock %}
     <title>
-        {% block title %}My Software company{% endblock %}
+        {% block title %}Pet Adoption App{% endblock %}
     </title>
   </head>
   <body>
+        <!-- ... boilerplate code above ... -->
     <header>
         {% block header %}
             <nav class="bg-gray-800 p-4">
                 <div class="max-w-2xl mx-auto flex justify-between items-center">
-                    <!-- Jinja URL used!-->
-                    <a href="/" class="text-white text-lg font-semibold">My Software Company</a>
+                    <a href="/" class="text-white text-lg font-semibold">Pet Adoption App</a>
                 </div>
             </nav>
         {% endblock %}
     </header>
+    <!-- ... boilerplate code below ... -->
+
     <main>
         {% block content %}{% endblock %}
 
@@ -28,7 +31,7 @@
     <footer>
         {% block footer %}
             <p class="text-center text-gray-500">
-                &copy; 2025 My Software Company. All rights reserved.
+                &copy; 2023 Pet Adoption App
             </p>
         {% endblock %}
     </footer>
