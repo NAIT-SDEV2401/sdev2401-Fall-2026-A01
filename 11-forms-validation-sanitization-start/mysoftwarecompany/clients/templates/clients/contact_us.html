@@ -1,19 +1,50 @@
 {% extends 'base.html' %}
 
+{% block title %}Contact Us | My Software Company{% endblock %}
+
 {% block content %}
-<div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold underline">
-        <!-- title here-->
-        Contact Us
-    </h1>
-    <!-- Add the CSRF token for security -->
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        <!-- Render the form fields -->
-        {{ form.as_p }}
-        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-            Submit
-        </button>
-    </form>
+<div class="page-container">
+    <div class="content-card">
+        <h1 class="page-heading">Contact Us</h1>
+        {% if success %}
+        <div class="mt-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded">
+            Your message has been sent successfully. We will get back to you shortly.
+        </div>
+        {% endif %}
+        <p class="page-intro">
+            Send us a message and we’ll get back to you as soon as possible.
+        </p>
+
+        <form method="post" class="stacked-form">
+            {% csrf_token %}
+
+            {% for error in form.non_field_errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
+
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="primary-button">
+                Send Message
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
+

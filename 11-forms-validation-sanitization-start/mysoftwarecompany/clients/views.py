@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # get the specical function to fetch an object or return a 404 error
 from django.shortcuts import get_object_or_404
-
+from django.core.mail import send_mail
 # Create your views here.
 from .models import Company, Employee
 from .forms import ContactForm
@@ -43,6 +43,21 @@ def employees_search_results(request, company_id):
 
 def contact_us(request):
     # if someone is just navigating to the form (rather than submitting from it)
-    if(request.method == "GET"):
+    if request.method == "GET":
         form = ContactForm()
         return render(request, "clients/contact_us.html", {"form": form})
+    elif request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            send_mail(
+                subject=f"New contact us message from {name}",
+                message=message,
+                from_email=email,
+                recipient_list=['some_admin@test.com']
+            )
+            return render(request, "clients/contact_us.html", {"form": ContactForm(), "success": True})
+        else:
+            return render(request, "clients/contact_us.html", {"form": form})
