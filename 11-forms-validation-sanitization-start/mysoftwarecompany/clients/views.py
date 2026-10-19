@@ -6,15 +6,13 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from .models import Company, Employee
-
+from .forms import ContactForm
 
 def list_companies(request):
     # fetching data from the database and passing it to the template
     companies = Company.objects.all()
 
     return render(request, 'clients/companies_list.html', {'companies': companies})
-
-
 def company_detail(request, company_id):
     # fetching a specific company by its ID or returning a 404 error if not found
     # note: we haven't discussed this but every single model in django
@@ -22,8 +20,6 @@ def company_detail(request, company_id):
     company = get_object_or_404(Company, id=company_id)
 
     return render(request, 'clients/company_detail.html', {'company': company})
-
-
 def employees_search_results(request, company_id):
     # this is going to handle the search query for employees
     query = request.GET.get('q', '')
@@ -44,3 +40,9 @@ def employees_search_results(request, company_id):
     # return
     return render(request, 'clients/employees_search_results.html',
                   {'employees': employees, 'query': query, 'company': company})
+
+def contact_us(request):
+    # if someone is just navigating to the form (rather than submitting from it)
+    if(request.method == "GET"):
+        form = ContactForm()
+        return render(request, "clients/contact_us.html", {"form": form})

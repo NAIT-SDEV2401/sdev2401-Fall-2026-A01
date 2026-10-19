@@ -117,34 +117,50 @@ Let's edit the view so that our form template looks a bit better.
 ```html
 {% extends 'base.html' %}
 
+{% block title %}Contact Us | My Software Company{% endblock %}
+
 {% block content %}
-<div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold underline">
-        <!-- title here-->
-        Contact Us
-    </h1>
-    <!-- Add the CSRF token for security -->
-    <form method="post" class="mt-4">
-        {% csrf_token %}
-        <!-- Render the form fields explicitly -->
-        {% for field in form %}
+<div class="page-container">
+    <div class="content-card">
+        <h1 class="page-heading">Contact Us</h1>
 
-            <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">
-                {{ field.label }}
-            </label>
-            {{ field }}
-            {% if field.errors %}
-                <p class="text-sm text-red-500 mt-1">{{ field.errors|striptags }}</p>
-            {% endif %}
-            </div>
-        {% endfor %}
+        <p class="page-intro">
+            Send us a message and we’ll get back to you as soon as possible.
+        </p>
 
-        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-            Submit
-        </button>
-    </form>
+        <form method="post" class="stacked-form">
+            {% csrf_token %}
+
+            {% for error in form.non_field_errors %}
+                <p class="form-error">{{ error }}</p>
+            {% endfor %}
+
+            {% for field in form %}
+                <div class="form-field">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="help-text">{{ field.help_text }}</p>
+                    {% endif %}
+
+                    {% for error in field.errors %}
+                        <p class="field-error">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="primary-button">
+                Send Message
+            </button>
+        </form>
+    </div>
 </div>
 {% endblock %}
+
 ```
 In the above we changed the way we render the form fields so that we can be a bit more granular with the styling, markup and error handling.
 - We loop through each field in the form and render the label and field explicitly.
@@ -213,14 +229,8 @@ You'll now notice that the form will just show the same page again when you subm
 In the template `contact_us.html` update the code to show a success message.
 
 ```html
-{% extends 'base.html' %}
 
-{% block content %}
-<div class="max-w-2xl mx-auto">
-    <h1 class="text-3xl font-bold underline">
-        Contact Us
-    </h1>
-    <!-- Show the success message -->
+    <!-- insert after Contact Us h1 tag -->
     {% if success %}
     <div class="mt-4 p-4 bg-green-100 text-green-800 border border-green-200 rounded">
         Your message has been sent successfully. We will get back to you shortly.
