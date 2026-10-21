@@ -25,3 +25,26 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['name', 'email', 'description']
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if len(name) < 3:
+            raise forms.ValidationError("hey bud, name must be longer than 2")
+        return name
+    def clean(self):
+        # note the line below calls the parent class's clean method to get the cleaned data remember this is from inheritence.
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        # we can search our database
+        if Company.objects.filter(email=email).exists():
+            raise forms.ValidationError("A company with this email already exists.")
+            # note you can also use `self.add_error('email', 'A company with this email already exists.')` to add the error to a specific field instead of the whole form.
+
+        # check for banned words.
+        name = cleaned_data.get('name', '')
+        description = cleaned_data.get('description', '')
+        forbidden_words = ['spam', 'fake', 'scam']
+        for word in forbidden_words:
+            if word in description.lower() or word in name.lower():
+                raise forms.ValidationError(f"The company contains a forbidden word: {word}")
+
+        return cleaned_data

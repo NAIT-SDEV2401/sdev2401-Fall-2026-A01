@@ -12,8 +12,20 @@ from .forms import ContactForm, CompanyForm
 # Create the contact form here.
 
 def create_company(request):
-    form = CompanyForm()
-    return render(request, 'clients/create_company.html', {"form":form})
+    if request.method == "GET":
+        form = CompanyForm()
+        return render(request, 'clients/create_company.html', {"form":form})
+    elif request.method == "POST":
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(
+                request,
+                'clients/create_company.html',
+                {"form": CompanyForm(), "new_company": form.instance}
+            )
+        else:
+            return render(request, 'clients/create_company.html', {"form":form})
 
 def contact_us(request):
     # this handles get request and displays the form to the user.
