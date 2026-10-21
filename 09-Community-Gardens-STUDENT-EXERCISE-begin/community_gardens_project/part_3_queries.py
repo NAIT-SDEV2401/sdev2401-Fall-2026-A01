@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# region set up
+# #!/usr/bin/env python
 
 ### ! Do not edit ! ###
 import os
@@ -12,39 +13,45 @@ os.environ.setdefault(
 django.setup()
 
 print("Django environment set up successfully.")
+# endregion
 
 
 from gardens_app.models import Garden, Plant
 
 
 def part_3_1_create():
+    garden, created = Garden.objects.get_or_create(
+        name="Central Roots Garden",
+        neighbourhood="Downtown"
+    )
+    return garden
 
 
-def part_3_2_all():
+# def part_3_2_all():
 
 
-def part_3_3_create():
+# def part_3_3_create():
 
 
-def part_3_4_query():
+# def part_3_4_query():
 
 
-def part_3_5_less_than():
+# def part_3_5_less_than():
 
 
-def part_3_6_ordered():
+# def part_3_6_ordered():
 
 
-def part_3_7_name_search(search_term):
+# def part_3_7_name_search(search_term):
 
 
-def part_3_8_relationship_query():
+# def part_3_8_relationship_query():
 
 
-def part_3_9_names():
+# def part_3_9_names():
 
 
-def part_3_10_summary():
+# def part_3_10_summary():
 
 
 def display_plants(plants):
@@ -58,17 +65,17 @@ def run():
     print("Running the community gardens ORM prep.")
 
     part_3_1_create()
-    gardens = part_3_2_all()
-    print(f"Gardens in the database: {[garden.name for garden in gardens]}")
+    # gardens = part_3_2_all()
+    # print(f"Gardens in the database: {[garden.name for garden in gardens]}")
 
-    part_3_3_create()
-    print(f"Plants for Central Roots Garden: {display_plants(part_3_4_query())}")
-    print(f"Plants with quantity below 20: {display_plants(part_3_5_less_than())}")
-    print(f"Plants ordered by quantity: {display_plants(part_3_6_ordered())}")
-    print(f"Plant-name search for 'to': {display_plants(part_3_7_name_search('to'))}")
-    print(f"Plants found through Garden fields: {display_plants(part_3_8_relationship_query())}")
-    print(f"Plant names only: {list(part_3_9_names())}")
-    print(f"Plant summary: {part_3_10_summary()}")
+    # part_3_3_create()
+    # print(f"Plants for Central Roots Garden: {display_plants(part_3_4_query())}")
+    # print(f"Plants with quantity below 20: {display_plants(part_3_5_less_than())}")
+    # print(f"Plants ordered by quantity: {display_plants(part_3_6_ordered())}")
+    # print(f"Plant-name search for 'to': {display_plants(part_3_7_name_search('to'))}")
+    # print(f"Plants found through Garden fields: {display_plants(part_3_8_relationship_query())}")
+    # print(f"Plant names only: {list(part_3_9_names())}")
+    # print(f"Plant summary: {part_3_10_summary()}")
 
 
 if __name__ == "__main__":

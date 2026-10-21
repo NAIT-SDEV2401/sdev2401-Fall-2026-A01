@@ -7,17 +7,19 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from .models import Company, Employee
-from .forms import ContactForm
+from .forms import ContactForm, CompanyForm
 
 # Create the contact form here.
+
+def create_company(request):
+    form = CompanyForm()
+    return render(request, 'clients/create_company.html', {"form":form})
+
 def contact_us(request):
     # this handles get request and displays the form to the user.
     if request.method == "GET":
         form = ContactForm()
-        return render(request,
-            "clients/contact_us.html",
-            {"form": form}
-        )
+        return render(request, "clients/contact_us.html",{"form": form})
     # form submission will be handled in future steps.
     elif request.method == "POST":
         form = ContactForm(request.POST)
@@ -57,7 +59,6 @@ def company_detail(request, company_id):
     company = get_object_or_404(Company, id=company_id)
 
     return render(request, 'clients/company_detail.html', {'company': company})
-
 
 def employees_search_results(request, company_id):
     # this is going to handle the search query for employees

@@ -1,0 +1,143 @@
+[
+{
+  "model": "clients.company",
+  "pk": 1,
+  "fields": {
+    "name": "Cat Sitting International",
+    "email": "cat.sitting@test.com",
+    "description": "At Cat Sitting International, we specialize in providing top-tier, globe-spanning, fur-covered companionship for your feline overlords while you're away. Our team of highly trained humans is fluent in over 37 dialects of meow and fully certified in Advanced Laser Pointer Maneuvering.\r\n\r\nWe dont just sitwe worship, entertain, and negotiate with your cat on your behalf. Whether its maintaining the precise sunbeam-to-blanket ratio, ensuring your cats food is arranged in an emotionally acceptable shape, or pretending to enjoy the gift of a freshly murdered sock, weve got it covered.",
+    "created_at": "2025-06-09T21:20:57.265Z",
+    "updated_at": "2025-06-09T21:20:57.273Z"
+  }
+},
+{
+  "model": "clients.company",
+  "pk": 2,
+  "fields": {
+    "name": "Acme Inc.",
+    "email": "acme@testing.com",
+    "description": "Acme Corporation is the worlds most questionably reliable supplier of gadgets, gizmos, rocket-powered roller skates, and portable black holes. Founded in a puff of smoke sometime in the early cartoon era, Acme has proudly served scheming coyotes, overly ambitious inventors, and chaos-loving customers since day one.\r\n\r\nWhether you're trying to catch a roadrunner, accidentally launch yourself into orbit, or simply want a product that defies physics and common sense, Acme is your one-stop disaster shop. No refunds. No warranties. No logic.",
+    "created_at": "2025-06-09T21:20:57.265Z",
+    "updated_at": "2025-06-09T21:20:57.273Z"
+  }
+},
+{
+  "model": "clients.company",
+  "pk": 3,
+  "fields": {
+    "name": "Tech Innovations",
+    "email": "tech.inno@test.com",
+    "description": "A leading company in tech innovations.",
+    "created_at": "2025-06-09T21:33:31.350Z",
+    "updated_at": "2025-06-09T21:33:31.350Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 1,
+  "fields": {
+    "name": "CEO",
+    "description": "Chief Executive Officer",
+    "created_at": "2025-06-10T21:38:39.309Z",
+    "updated_at": "2025-06-10T21:38:39.309Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 2,
+  "fields": {
+    "name": "Manager",
+    "description": "Manages a team of employees",
+    "created_at": "2025-06-10T21:38:39.320Z",
+    "updated_at": "2025-06-10T21:38:39.320Z"
+  }
+},
+{
+  "model": "clients.role",
+  "pk": 3,
+  "fields": {
+    "name": "Developer",
+    "description": "Writes code and develops software",
+    "created_at": "2025-06-10T21:38:39.325Z",
+    "updated_at": "2025-06-10T21:38:39.325Z"
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 1,
+  "fields": {
+    "first_name": "Gary",
+    "last_name": "Smith",
+    "email": "gary.smith@acmetesting.com",
+    "created_at": "2025-06-10T20:29:19.978Z",
+    "updated_at": "2025-06-10T21:51:30.100Z",
+    "company": 2,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 2,
+  "fields": {
+    "first_name": "Alice",
+    "last_name": "Johnson",
+    "email": "alice.johnson@acmetesting.com",
+    "created_at": "2025-06-10T21:18:10.194Z",
+    "updated_at": "2025-06-10T21:18:10.194Z",
+    "company": 2,
+    "role": null
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 3,
+  "fields": {
+    "first_name": "Bob",
+    "last_name": "Smith",
+    "email": "bob.smith@acmetesting.com",
+    "created_at": "2025-06-10T21:27:53.047Z",
+    "updated_at": "2025-06-10T21:42:29.838Z",
+    "company": 2,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 4,
+  "fields": {
+    "first_name": "Diana",
+    "last_name": "Prince",
+    "email": "diana.prince@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.266Z",
+    "updated_at": "2025-06-10T22:09:15.266Z",
+    "company": 1,
+    "role": 1
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 5,
+  "fields": {
+    "first_name": "Ethan",
+    "last_name": "Hunt",
+    "email": "ethan.hunt@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.274Z",
+    "updated_at": "2025-06-10T22:09:15.274Z",
+    "company": 1,
+    "role": 2
+  }
+},
+{
+  "model": "clients.employee",
+  "pk": 6,
+  "fields": {
+    "first_name": "Fiona",
+    "last_name": "Green",
+    "email": "fiona.green@catsittesting.com",
+    "created_at": "2025-06-10T22:09:15.278Z",
+    "updated_at": "2025-06-10T22:09:15.278Z",
+    "company": 1,
+    "role": 3
+  }
+}
+]

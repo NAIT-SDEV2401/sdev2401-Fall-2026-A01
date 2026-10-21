@@ -1,5 +1,5 @@
 from django import forms
-
+from .models import Company
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
     email = forms.EmailField(required=True)
@@ -20,3 +20,8 @@ class ContactForm(forms.Form):
         if len(message) < 10:
             raise forms.ValidationError("Message must be at least 10 characters long.")
         return message
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = ['name', 'email', 'description']
