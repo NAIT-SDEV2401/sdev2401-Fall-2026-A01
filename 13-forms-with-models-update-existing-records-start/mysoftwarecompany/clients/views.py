@@ -9,6 +9,35 @@ from django.shortcuts import get_object_or_404
 from .models import Company, Employee
 from .forms import ContactForm, CompanyForm
 
+def update_company(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    if request.method == "GET":
+        form = CompanyForm(instance=company)
+        return render(
+            request, 
+            'clients/update_company.html',
+            {"company":company, "form":form}
+        )
+    elif request.method == "POST":
+        form = CompanyForm(request.POST, instance=company)
+        if form.is_valid():
+            form.save()
+            updated_company = form.instance
+            return render(request,
+                "clients/update_company.html",
+                {
+                    "form": CompanyForm(instance=updated_company),
+                    "company": company,
+                    "success": True
+                }
+            )
+        else:
+            return render(request,
+                "clients/update_company.html",
+                {"form": form}
+            )
+
+
 def create_company(request):
     if request.method == "POST":
         form = CompanyForm(request.POST)
@@ -35,7 +64,6 @@ def create_company(request):
             "clients/create_company.html",
             {"form": form}
         )
-
 
 # Create the contact form here.
 def contact_us(request):
