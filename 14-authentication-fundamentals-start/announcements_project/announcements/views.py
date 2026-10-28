@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import Announcement
 
-
+@login_required
 def announcement_list(request):
     announcements = Announcement.objects.all().order_by('-created_at')
     return render(
