@@ -1,30 +1,12 @@
 <!doctype html>
+{% load static%}
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    {% block css_styles %}
-    <!-- just adding a border -->
-    <style>
-        input, select {
-            width: 100%;
-            border: 1px solid #d1d5db; /* Tailwind's gray-300 */
-            border-radius: 0.5rem;      /* rounded-lg */
-            padding: 0.5rem 0.75rem;    /* py-2 px-3 */
-            outline: none;
-        }
-        input:focus, select:focus {
-            border-color: #2563eb;      /* Tailwind's blue-600 */
-            box-shadow: 0 0 0 2px #93c5fd; /* light blue ring */
-        }
-        textarea {
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 8px;
-        }
-    </style>
-    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    {% block css_styles %}{% endblock %}
     {% block js_scripts %}{% endblock %}
     <title>
         {% block title %}Announcements App{% endblock %}
@@ -35,8 +17,14 @@
         {% block header %}
         <nav class="bg-gray-800 p-4">
                 <div class="max-w-2xl mx-auto flex justify-between items-center">
-                    <!-- Jinja URL used!-->
-                    <a href="" class="text-white text-lg font-semibold">
+                    <a href="" class="flex text-white text-lg font-semibold">
+                        <!-- Added image -->
+                        <img src="{% static '/logo-sm.png' %}"
+                            class="px-2"
+                            width="50"
+                            height="50"
+
+                        >
                         Announcements App
                     </a>
                     <!--  Check if the user is authenticated -->

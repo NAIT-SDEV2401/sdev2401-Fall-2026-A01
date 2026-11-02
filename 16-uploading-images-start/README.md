@@ -36,10 +36,9 @@ We're going to update our web application so that we can use both static files a
 Once you create the the director add the images in the `images-use-folder` directory to the `static` directory you just created.
 
 #### 2.2 Update your `settings.py` file to handle static files.
-- In `settings.py`, set the `STATIC_URL` and `STATIC_ROOT` variables.
+- In settings.py, set the STATIC_URL and STATICFILES_DIRS variables.
     - `STATIC_URL = '/static/'` will be the URL prefix for static files when you're trying to access them in your templates or your browser.
-    - `STATICFILES_DIRS = [BASE_DIR / 'static']` will be the directory where all static files will be collected when you run the `collectstatic` command.
-    Note: this is an array you can have multiple directories if needed.
+    - `STATICFILES_DIRS = [BASE_DIR / 'static']` specifies the directories where Django looks for static files. Note: this is a list, so you can have multiple directories if needed.
 
 Your `settings.py` file should look something like this:
 ```python
