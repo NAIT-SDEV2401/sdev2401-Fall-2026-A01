@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+<!-- This essentially removes the header. by setting it blank. -->
+{% endblock %}
+
+
+{% block content %}
+
+<h2 class="mt-8 text-2xl font-semibold text-gray-800 mb-4">
+    Login
+</h2>
+<form method="post">
+  <!-- STUDENT TODO: embed your csrf token -->
+  {% csrf_token %}
+  <!-- STUDENT TODO: embed your form as a paragraph tags with  -->
+  {{ form.as_p }}
+  <button
+    class="px-4 py-2 mt-4 mb-4 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    type="submit">Login</button>
+</form>
+
+{% endblock %}

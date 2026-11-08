@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {% block css_styles %}
+    <!-- just adding a border -->
+    <style>
+        input, select {
+            width: 100%;
+            border: 1px solid #d1d5db; /* Tailwind's gray-300 */
+            border-radius: 0.5rem;      /* rounded-lg */
+            padding: 0.5rem 0.75rem;    /* py-2 px-3 */
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: #2563eb;      /* Tailwind's blue-600 */
+            box-shadow: 0 0 0 2px #93c5fd; /* light blue ring */
+        }
+        textarea {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+        }
+    </style>
+    {% endblock %}
+    {% block js_scripts %}{% endblock %}
+    <title>
+        {% block title %}Trail Crew Portal{% endblock %}
+    </title>
+  </head>
+  <body>
+    <header>
+
+        {% block header %}
+            <nav class="bg-gray-800 p-4">
+                <div class="max-w-2xl mx-auto flex justify-between items-center">
+                    <a href="/" class="text-white text-lg font-semibold">
+                        Trail Crew Portal
+                    </a>
+                    {% if user.is_authenticated %}
+                    <div>
+                        <!-- STUDENT TODO (part 2):  Add logout tag to action -->
+                        <form method="post" action="{% url 'logout'%}">
+                            <span class="text-gray-300 mr-4">
+                                Hello, {{ user.username }}!
+                            </span>
+                            <!-- STUDENT TODO (part 2):  Add CSRF Token -->
+                            {% csrf_token %}
+                            <button type="submit" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+
+                    {% else %}
+                    <div>
+                        <!-- STUDENT TODO (part 2):  Add login template tag to href -->
+                        <a href="{% url 'login' %}" class="px-4 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Login</a>
+                        <!-- STUDENT TODO (part 1):  Add register template tag to href -->
+                        <a href="{%url 'register'%}" class="px-4 py-2 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Register</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </nav>
+        {% endblock %}
+    </header>
+    <main>
+        <div class="max-w-2xl mx-auto">
+            {% block content %}{% endblock %}
+        </div>
+
+    </main>
+    <footer>
+        {% block footer %}
+
+        {% endblock %}
+    </footer>
+  </body>
+</html>
