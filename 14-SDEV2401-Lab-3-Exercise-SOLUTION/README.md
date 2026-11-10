@@ -34,7 +34,7 @@ Note: Please take a look at the Desired output section for what the final output
         - this should use the `LoginView` import
     - The logout path should be `logout/` with the name `logout`
         - this should use the `LogoutView` import
-Important Note: that in the `trail_crew_project/urls.py` file, the authentication URLs are already included under the `accounts/` path.
+Important Note: that in the `trail_crew_project/urls.py` file, the authentication URLs are already included under the `core/` path.
 
 3. In the template `templates/base.html` update the login and logout links that point to the correct Django template tags.
    - for login template tag you can use the name of the route you defined in the previous step. The template tag should look like this: `{% url 'NAME_OF_ROUTE_HERE' %}` where `NAME_OF_ROUTE_HERE` is the name you defined in the `core/urls.py` file.
@@ -42,7 +42,7 @@ Important Note: that in the `trail_crew_project/urls.py` file, the authenticatio
 
 4. Test that login and logout functionality works with your superuser account.
 
-   - A user should be able to login at `/accounts/login/` and logout at `/accounts/logout/`.
+   - A user should be able to login at `/core/login/` and logout at `/core/logout/`.
    - the user should be able to click the links in the navigation bar to login and logout.
 
 Note: Please take a look at the Desired output section for what the final output for this part should look like.

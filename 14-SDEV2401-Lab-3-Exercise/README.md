@@ -10,7 +10,7 @@ The goal is to protect `/briefing/` so that only authenticated users can access 
 
 ### Part 1: Implement Authentication for the Trail Crew Portal app
 
-1. Open a terminal in `trail_crew_project/`. Create a virtual environment and install dependencies from requirements.txt,  create a superuser and run the development server.
+1. Open a terminal in `trail_crew_project/`. Create a virtual environment and install dependencies from requirements.txt,  create a superuser and run the development server:
 
 2. Secure the "briefing/" route so that only the authenticated users can access it.
 
@@ -42,7 +42,7 @@ Important Note: that in the `trail_crew_project/urls.py` file, the authenticatio
 
 4. Test that login and logout functionality works with your superuser account.
 
-   - A user should be able to login at `/accounts/login/` and logout at `/accounts/logout/`.
+   - A user should be able to login at `/core/login/` and logout at `/core/logout/`.
    - the user should be able to click the links in the navigation bar to login and logout.
 
 Note: Please take a look at the Desired output section for what the final output for this part should look like.
