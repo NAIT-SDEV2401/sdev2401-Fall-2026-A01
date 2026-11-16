@@ -53,9 +53,17 @@ class Submission(models.Model):
 
     student_name = models.CharField(max_length=100)
 
+    instructor_notified = models.BooleanField(default=False)
+
     file = models.FileField(upload_to='submissions/')
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Submission by {self.student_name} for {self.assignment}"
 
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
