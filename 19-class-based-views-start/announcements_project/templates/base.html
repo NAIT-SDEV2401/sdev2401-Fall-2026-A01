@@ -19,7 +19,7 @@
         <nav class="bg-gray-800 p-4">
             <div class="max-w-2xl mx-auto flex justify-between items-center">
                 <!-- Title -->
-                <a href="" class="flex text-white text-lg font-semibold">
+                <a href="{% url 'home' %}" class="flex text-white text-lg font-semibold">
                     <!-- Added image -->
                     <img src="{% static '/logo-sm.png' %}"
                         class="px-2"
@@ -42,7 +42,7 @@
                         <a href="{% url 'assignment_list' %}" class="px-4 py-2 mr-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
                             Assignments
                         </a>
-                        <a href="{% url 'announcements_list' %}" class="px-4 py-2 mr-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                        <a href="{% url 'announcement_list' %}" class="px-4 py-2 mr-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                             Announcements
                         </a>
                         <!--  Add CSRF Token -->

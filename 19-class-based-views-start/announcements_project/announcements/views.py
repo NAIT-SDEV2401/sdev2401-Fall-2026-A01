@@ -1,24 +1,25 @@
 from django.shortcuts import render, redirect
-# import login_required decorator
 from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
 
-# Create your views here.
 from .models import Announcement
 from .forms import AnnouncementForm
+from django.views import View
+
+class AnnouncementListView(View):
+    template_name='announcements/announcement_list.html'
+    def get(self, request):
+        announcements = Announcement.objects.all().order_by('-created_at')
+        return render(
+            request,
+            self.template_name,
+            {'announcements': announcements}
+        )
+
 
 # our test function here.
 def is_teacher(user):
     # the user object is passed in here by the decorator
     return user.role == 'teacher'
-
-@login_required
-def announcement_list(request):
-    announcements = Announcement.objects.all().order_by('-created_at')
-    return render(
-        request,
-        'announcements/announcement_list.html',
-        {'announcements': announcements}
-    )
 
 # this will restrict access to only users that pass the is_teacher test
 # it will redirect to the login page if the user does not have permission.

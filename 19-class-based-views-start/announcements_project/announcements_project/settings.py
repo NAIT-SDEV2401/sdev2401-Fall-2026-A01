@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "profiles",
     # add the courses app
     "courses",
+    "web",
 ]
 
 MIDDLEWARE = [

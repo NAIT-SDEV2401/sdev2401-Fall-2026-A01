@@ -26,6 +26,7 @@ urlpatterns = [
     path('announcements/', include('announcements.urls')),  # announcements app urls
     path('profiles/', include('profiles.urls')),  # profiles app urls
     path('courses/', include('courses.urls')),  # courses app urls
+    path('', include('web.urls')),
 ]
 
 if settings.DEBUG:
