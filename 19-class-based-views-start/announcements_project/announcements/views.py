@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required, user_passes_test, permission_required
-
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.decorators import method_decorator
 from .models import Announcement
 from .forms import AnnouncementForm
 from django.views import View
 
+@method_decorator(login_required, name='dispatch')
 class AnnouncementListView(View):
     template_name='announcements/announcement_list.html'
     def get(self, request):
@@ -15,28 +16,27 @@ class AnnouncementListView(View):
             {'announcements': announcements}
         )
 
-
 # our test function here.
 def is_teacher(user):
     # the user object is passed in here by the decorator
     return user.role == 'teacher'
 
-# this will restrict access to only users that pass the is_teacher test
-# it will redirect to the login page if the user does not have permission.
-@login_required
-@user_passes_test(is_teacher, login_url='login')
-# @permission_required('announcements.add_announcement', raise_exception=True) # the optional section
-def create_announcement(request):
-    if request.method == 'POST':
-        form = AnnouncementForm(request.POST)
+@method_decorator(login_required, name='dispatch')
+@method_decorator(user_passes_test(is_teacher, login_url='login'), name='dispatch')
+class CreateAnnouncementView(View):
+    template_name = 'announcements/create_announcement.html'
+    form_class = AnnouncementForm
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
         if form.is_valid():
             announcement = form.save(commit=False)
-            # the commit false will prevent the form from saving to the database
-            # set the created_by field to the current user
             announcement.created_by = request.user
             announcement.save()
-            # save the announcement to the database.
             return redirect('announcement_list')
-    else:
-        form = AnnouncementForm()
-    return render(request, 'announcements/create_announcement.html', {'form': form})
+        return render(request, self.template_name, {'form': form})
+    
