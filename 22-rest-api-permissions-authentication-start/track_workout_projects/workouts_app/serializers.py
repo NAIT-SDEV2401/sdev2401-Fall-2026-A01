@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from .models import Exercise
-
+from .models import Exercise, Workout
 
 class ExerciseSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -23,4 +22,9 @@ class ExerciseSerializer(serializers.Serializer):
         instance.save()
         return instance
 
-
+class WorkoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Workout
+        fields = '__all__'
+        # if we wanted all the fields EXCEPT for field01 and field02
+        # exclude = ['field01', 'field02']
